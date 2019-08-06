@@ -109,6 +109,9 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+    // TODO: switch to smaller subset of flexmark deps?
+    compile "com.vladsch.flexmark:flexmark-all:0.50.26"
+
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

@@ -13,7 +13,7 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public class CacheManager {
-	public static Path CACHE_PATH = FMLPaths.getOrCreateGameRelativePath(Paths.get(""), Patchdown.MODID + "_cache");
+	public static Path CACHE_PATH = FMLPaths.getOrCreateGameRelativePath(Paths.get(Patchdown.MODID + "_cache"), Patchdown.MODID + "_cache");
 	private CacheIndex index = new CacheIndex(CACHE_PATH.resolve("versions.txt"));
 	private static final Logger LOGGER = LogManager.getLogger();
 	private BookLoader loader = new BookLoader();
@@ -46,7 +46,7 @@ public class CacheManager {
 		});
 
 		index.getModsToUpdate().stream().filter(loader::hasBook).forEach(m -> {
-			Path modFolder = FileUtils.getOrCreateDirectory(CACHE_PATH, m.getModId());
+			Path modFolder = FileUtils.getOrCreateDirectory(getPathForMod(m), Patchdown.MODID + " - " + m.getModId());
 			// TODO: Clear out cache folders of mods that just updated
 			loader.compileBook(m, modFolder);
 		});
